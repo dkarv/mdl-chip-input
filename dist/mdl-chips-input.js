@@ -32,7 +32,7 @@ $(document).ready(function() {
             return e.keyCode !== 13;
         });
         input.on('keyup', function(e) {
-            if(e.keyCode === 13 || e.keyCode === 188) {
+            if([13, 32,188].indexOf(e.keyCode)) {
                 var content = input.val().replace(/[^0-9a-zäüö]/gi, '');
                 if(content) {
                     input.val('');
