@@ -1,0 +1,22 @@
+.mdl-chipfield {
+  width: 100%;
+
+  .mdl-chip {
+    float: left;
+    margin: 2px 3px;
+  }
+
+  .original {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 5px;
+  }
+
+  .mdl-textfield__label {
+    top: 0;
+  }
+  .mdl-textfield__label::after {
+    bottom: 0;
+  }
+}

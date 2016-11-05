@@ -1,0 +1,16 @@
+.mdl-chipfield {
+  width: 100%; }
+  .mdl-chipfield .mdl-chip {
+    float: left;
+    margin: 2px 3px; }
+  .mdl-chipfield .original {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 5px; }
+  .mdl-chipfield .mdl-textfield__label {
+    top: 0; }
+  .mdl-chipfield .mdl-textfield__label::after {
+    bottom: 0; }
+
+/*# sourceMappingURL=mdl-chips-input.css.map */
