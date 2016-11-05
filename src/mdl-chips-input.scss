@@ -19,4 +19,14 @@
   .mdl-textfield__label::after {
     bottom: 0;
   }
+
+  // search results
+  .results {
+    width: 100%;
+    list-style: none;
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    padding: 0 5px;
+  }
 }

@@ -24,19 +24,26 @@
     <main class="mdl-layout__content">
         <form action="#">
             <h3>Simple Input Field</h3>
-            <div class="mdl-textfield mdl-js-textfield mdl-chipfield">
+            <div class="mdl-textfield mdl-js-textfield" id="demo-0">
                 <input type="hidden" class="mdl-chipfield__input" name="tags" value="">
                 <input class="mdl-textfield__input" type="text" id="my-input-0">
                 <label class="mdl-textfield__label" for="my-input-0">Add Chips</label>
             </div>
 
             <h3>Preinitialized field</h3>
-
-            <div class="mdl-textfield mdl-js-textfield mdl-chipfield">
+            <div class="mdl-textfield mdl-js-textfield" id="demo-1">
                 <input type="hidden" class="mdl-chipfield__input" name="tags" value="chip1,chip2,chip3">
                 <input class="mdl-textfield__input" type="text" id="my-input-1">
                 <label class="mdl-textfield__label" for="my-input-1">Add Chips</label>
             </div>
+
+            <h3>With Autocomplete</h3>
+            <div class="mdl-textfield mdl-js-textfield" id="demo-2">
+                <input type="hidden" class="mdl-chipfield__input" name="tags" value="">
+                <input class="mdl-textfield__input" type="text" id="my-input-2">
+                <label class="mdl-textfield__label" for="my-input-2">Search Chips</label>
+            </div>
+
         </form>
     </main>
 </div>

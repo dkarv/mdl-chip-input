@@ -12,5 +12,12 @@
     top: 0; }
   .mdl-chipfield .mdl-textfield__label::after {
     bottom: 0; }
+  .mdl-chipfield .results {
+    width: 100%;
+    list-style: none;
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    padding: 0 5px; }
 
 /*# sourceMappingURL=mdl-chips-input.css.map */
