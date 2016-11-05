@@ -1,0 +1,40 @@
+<html class="mdl-js">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet prefetch" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet prefetch" href="//storage.googleapis.com/code.getmdl.io/1.2.1/material.teal-red.min.css">
+    <link rel="stylesheet prefetch" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <style>
+        .mdl-layout {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mdl-layout__content {
+            width: 95%;
+            padding: 24px;
+            flex: none;
+        }
+    </style>
+</head>
+<body>
+<div class="mdl-layout__container">
+    <div class="mdl-layout mdl-js-layout mdl-color--grey-100 is-upgraded" data-upgraded=",MaterialLayout">
+        <main class="mdl-layout__content">
+            <form action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-chipfield is-upgraded is-dirty"
+                     data-upgraded=",MaterialTextfield">
+                    <div class="chips"></div>
+                    <div class="original">
+                        <input type="hidden" class="mdl-chipfield__input" name="tags" value="">
+                        <input class="mdl-textfield__input" type="text" id="my-input">
+                        <label class="mdl-textfield__label" for="my-input">Add Chips</label>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
+</body>
+</html>
