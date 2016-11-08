@@ -1,23 +1,79 @@
 .mdl-chipfield {
   width: 100%;
+  cursor: text;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+
+  .inputs {
+    margin-left: 5px;
+    width: auto;
+    float: left;
+    position: relative;
+  }
 
   .mdl-chip {
     float: left;
-    margin: 2px 3px;
+    margin-right: 5px;
   }
 
-  .original {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: 5px;
+  .mdl-textfield__input {
+    width: auto;
+    // ~ same height as the chips + 2*4 for the padding
+    height: 38px;
+    border-bottom: none;
   }
 
   .mdl-textfield__label {
-    top: 0;
+    top: 8px;
   }
-  .mdl-textfield__label::after {
-    bottom: 0;
+
+  &:after {
+    background-color: rgb(0,150,136);
+    bottom: -2px;
+    content: '';
+    height: 2px;
+    left: 45%;
+    position: absolute;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    visibility: hidden;
+    width: 10px;
+  }
+
+  &.is-focused:after {
+    visibility: visible;
+    left: 0;
+    width: 100%;
+  }
+
+  /*:after {
+      background-color: lightgrey;
+      bottom: 15px;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition-duration: .2s;
+      transition-timing-function: cubic-bezier(.4,0,.2,1);
+      width: 100%;
+  }*/
+
+  /*.mdl-textfield__label:before {
+      background-color: lightgrey;
+      bottom: 15px;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition-duration: .2s;
+      transition-timing-function: cubic-bezier(.4,0,.2,1);
+      width: 100%;
+  }*/
+
+  // hide stuff from MaterialTextField
+  .mdl-textfield__label:after {
+    display: none;
   }
 
   // search results
@@ -29,4 +85,9 @@
     z-index: 10;
     padding: 0 5px;
   }
+
+  .results li {
+    cursor: pointer;
+  }
+
 }

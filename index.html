@@ -20,35 +20,34 @@
     </style>
 </head>
 <body>
-<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
+<div class="mdl-layout mdl-js-layout">
     <main class="mdl-layout__content">
         <form action="#">
             <h3>Simple Input Field</h3>
-            <div class="mdl-textfield mdl-js-textfield" id="demo-0">
-                <input type="hidden" class="mdl-chipfield__input" name="tags" value="">
+            <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-0">
+                <input type="hidden" class="mdl-chipfield__input" name="demo-0" value="">
                 <input class="mdl-textfield__input" type="text" id="my-input-0">
                 <label class="mdl-textfield__label" for="my-input-0">Add Chips</label>
             </div>
 
             <h3>Preinitialized field</h3>
-            <div class="mdl-textfield mdl-js-textfield" id="demo-1">
-                <input type="hidden" class="mdl-chipfield__input" name="tags" value="chip1,chip2,chip3">
+            <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-1">
+                <input type="hidden" class="mdl-chipfield__input" name="demo-1" value="chip1,chip2,chip3">
                 <input class="mdl-textfield__input" type="text" id="my-input-1">
                 <label class="mdl-textfield__label" for="my-input-1">Add Chips</label>
             </div>
 
             <h3>With Autocomplete</h3>
-            <div class="mdl-textfield mdl-js-textfield" id="demo-2">
-                <input type="hidden" class="mdl-chipfield__input" name="tags" value="">
+            <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-2">
+                <input type="hidden" class="mdl-chipfield__input" name="demo-2" value="">
                 <input class="mdl-textfield__input" type="text" id="my-input-2">
                 <label class="mdl-textfield__label" for="my-input-2">Search Chips</label>
             </div>
-
         </form>
     </main>
 </div>
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="dist/mdl-chips-input.js" type="application/javascript"></script>
+<script src="demo.js" type="application/javascript"></script>
 </body>
 </html>
