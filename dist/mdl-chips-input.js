@@ -35,6 +35,7 @@
             update();
         };
         this.element_.insertBefore(chip, this.inputs_);
+        this.updateTarget_();
     };
 
     MaterialChipInput.prototype.getChips = function() {
@@ -64,10 +65,11 @@
         if(this.results_) {
             var query = this.input_.value;
             if(query && query.length >= 2) {
+                var regex = new RegExp('(' + query + ')', 'gi');
                 var callback = function(result) {
-                    console.log(result);
                     this.results_.innerHTML = result.map(function(res) {
-                        return '<li>' + res + '</li>';
+                        return '<li data-value="' + res + '">' +
+                            res.replace(regex, '<b>$1</b>') + '</li>';
                     }).join('\n');
                 }.bind(this);
                 this.options_.search(query, callback);
@@ -85,7 +87,7 @@
         }
     };
 
-    MaterialChipInput.prototype.getSelectedResult_ = function(){
+    MaterialChipInput.prototype.getSelectedResult_ = function() {
         var children = this.results_.children;
         for(var i = children.length; i--;) {
             if(children[i].classList.contains('is-selected')) {
@@ -121,12 +123,12 @@
         // TODO use more reasonable logic here
         if([13, 32, 188].indexOf(code) > -1) {
             var content, selected = -1;
-            if(this.results_ && code === 13){
+            if(this.results_ && code === 13) {
                 selected = this.getSelectedResult_();
             }
 
-            if(selected > -1){
-                content = this.results_.children[selected].innerText;
+            if(selected > -1) {
+                content = this.results_.children[selected].getAttribute('data-value');
             } else {
                 content = this.input_.value.replace(/[^0-9a-zäüö]/gi, '');
             }
@@ -151,7 +153,7 @@
     };
 
     MaterialChipInput.prototype.clickedResult_ = function(event) {
-        this.addChip_(event.target.innerText);
+        this.addChip_(event.target.getAttribute('data-value'));
         this.clearResults_();
         this.input_.value = '';
     };

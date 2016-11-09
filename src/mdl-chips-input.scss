@@ -65,7 +65,7 @@
 
   .results li {
     cursor: pointer;
-    padding: 0 5px;
+    padding: 10px 5px 10px 10px;
 
     &:hover, &.is-selected {
       background-color: rgb(238, 238, 238);
