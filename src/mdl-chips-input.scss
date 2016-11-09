@@ -26,6 +26,7 @@
   }
 
   &:after {
+    /* TODO: without integration into MDL this has to be changed to your primary color */
     background-color: rgb(0, 150, 136);
     bottom: -1px;
     content: '';
