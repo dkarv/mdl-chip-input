@@ -17,6 +17,11 @@
     };
 
     MaterialChipInput.prototype.addChip_ = function(text) {
+        var currentChips = this.getChips();
+        if(currentChips.indexOf(text) > -1) {
+            // ignore duplicates
+            return;
+        }
         var chip = document.createElement('span');
         chip.classList = 'mdl-chip mdl-chip--deletable';
         chip.innerHTML =
@@ -58,12 +63,17 @@
     MaterialChipInput.prototype.startSearch_ = function() {
         if(this.results_) {
             var query = this.input_.value;
-            this.search(query, function(result) {
-                console.log(result);
-                this.results_.innerHTML = result.map(function(res) {
-                    return '<li>' + res + '</li>';
-                }).join('\n');
-            });
+            if(query && query.length >= 2) {
+                var callback = function(result) {
+                    console.log(result);
+                    this.results_.innerHTML = result.map(function(res) {
+                        return '<li>' + res + '</li>';
+                    }).join('\n');
+                }.bind(this);
+                this.options_.search(query, callback);
+            } else {
+                this.results_.innerHTML = '';
+            }
         }
     };
 
@@ -73,6 +83,17 @@
                 this.results_.children[i].remove();
             }
         }
+    };
+
+    MaterialChipInput.prototype.getSelectedResult_ = function(){
+        var children = this.results_.children;
+        for(var i = children.length; i--;) {
+            if(children[i].classList.contains('is-selected')) {
+                children[i].classList.remove('is-selected');
+                return i;
+            }
+        }
+        return -1;
     };
 
     MaterialChipInput.prototype.mouseDown_ = function(event) {
@@ -87,7 +108,9 @@
                 this.element_.children[this.element_.children.length - 2].remove();
             }
         }
-        if(code === 13) {
+        var isEnter = code === 13;
+        var isArrow = this.results_ && (code === 40 || code === 38);
+        if(isEnter || isArrow) {
             // prevent enter from submitting the form
             event.preventDefault();
         }
@@ -97,41 +120,49 @@
         var code = event.which || event.keyCode;
         // TODO use more reasonable logic here
         if([13, 32, 188].indexOf(code) > -1) {
-            var content = this.input_.value.replace(/[^0-9a-zäüö]/gi, '');
+            var content, selected = -1;
+            if(this.results_ && code === 13){
+                selected = this.getSelectedResult_();
+            }
+
+            if(selected > -1){
+                content = this.results_.children[selected].innerText;
+            } else {
+                content = this.input_.value.replace(/[^0-9a-zäüö]/gi, '');
+            }
             if(content) {
-                var currentChips = this.getChips();
-                // ignore duplicates
-                if(currentChips.indexOf(content) === -1) {
-                    this.addChip_(content);
-                    this.updateTarget_();
-                    this.element_.classList.remove('is-dirty');
-                }
+                this.addChip_(content);
 
                 // delete search results
                 this.clearResults_();
             }
             this.input_.value = '';
+            this.element_.classList.remove('is-dirty');
+        } else if(this.results_ && (code === 38 || code === 40)) {
+            var children = this.results_.children;
+            var index = this.getSelectedResult_();
+            index = index + (code === 40 ? 1 : -1);
+            index = Math.min(Math.max(0, index), children.length - 1);
+            children[index].classList.add('is-selected');
         } else {
             this.startSearch_();
         }
         event.preventDefault();
     };
 
+    MaterialChipInput.prototype.clickedResult_ = function(event) {
+        this.addChip_(event.target.innerText);
+        this.clearResults_();
+        this.input_.value = '';
+    };
+
     MaterialChipInput.prototype.addSearch = function(search) {
         this.results_ = document.createElement('ul');
-        this.results_.classList = 'results';
+        this.results_.classList = 'results mdl-shadow--4dp';
         this.inputs_.insertBefore(this.results_, this.input_.nextSibling);
         this.options_.search = search;
 
-        // TODO add onclick handler
-        /* objs.results.on('click', 'li', function() {
-         var text = $(this).text();
-         if(getChips().indexOf(text) === -1) {
-         insertChip(text);
-         }
-         objs.results.empty();
-         objs.input.val('');
-         });*/
+        this.results_.addEventListener('click', this.clickedResult_.bind(this));
     };
 
     MaterialChipInput.prototype.init = function() {

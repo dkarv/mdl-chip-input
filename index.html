@@ -14,36 +14,47 @@
 
         .mdl-layout__content {
             width: 95%;
-            padding: 24px;
-            flex: none;
+            height: 95%;
+        }
+
+        .mdl-chipfield {
+            width: 100%;
+            min-width: 300px;
         }
     </style>
 </head>
 <body>
 <div class="mdl-layout mdl-js-layout">
     <main class="mdl-layout__content">
-        <form action="#">
-            <h3>Simple Input Field</h3>
-            <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-0">
-                <input type="hidden" class="mdl-chipfield__input" name="demo-0" value="">
-                <input class="mdl-textfield__input" type="text" id="my-input-0">
-                <label class="mdl-textfield__label" for="my-input-0">Add Chips</label>
-            </div>
+        <div class="mdl-grid">
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-cell mdl-cell--6-col">
+                <h2>Demo</h2>
+                <form action="#">
+                    <h4>Simple</h4>
+                    <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-0">
+                        <input type="hidden" class="mdl-chipfield__input" name="demo-0" value="">
+                        <input class="mdl-textfield__input" type="text" id="my-input-0">
+                        <label class="mdl-textfield__label" for="my-input-0">Add Chips</label>
+                    </div>
 
-            <h3>Preinitialized field</h3>
-            <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-1">
-                <input type="hidden" class="mdl-chipfield__input" name="demo-1" value="chip1,chip2,chip3">
-                <input class="mdl-textfield__input" type="text" id="my-input-1">
-                <label class="mdl-textfield__label" for="my-input-1">Add Chips</label>
-            </div>
+                    <h4>Preinitialized</h4>
+                    <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-1">
+                        <input type="hidden" class="mdl-chipfield__input" name="demo-1" value="chip1,chip2,chip3">
+                        <input class="mdl-textfield__input" type="text" id="my-input-1">
+                        <label class="mdl-textfield__label" for="my-input-1">Add Chips</label>
+                    </div>
 
-            <h3>With Autocomplete</h3>
-            <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-2">
-                <input type="hidden" class="mdl-chipfield__input" name="demo-2" value="">
-                <input class="mdl-textfield__input" type="text" id="my-input-2">
-                <label class="mdl-textfield__label" for="my-input-2">Search Chips</label>
+                    <h4>Autocomplete</h4>
+                    <div class="mdl-textfield mdl-js-textfield mdl-chipfield" id="demo-2">
+                        <input type="hidden" class="mdl-chipfield__input" name="demo-2" value="">
+                        <input class="mdl-textfield__input" type="text" id="my-input-2">
+                        <label class="mdl-textfield__label" for="my-input-2">Search Countries</label>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="mdl-layout-spacer"></div>
+        </div>
     </main>
 </div>
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
