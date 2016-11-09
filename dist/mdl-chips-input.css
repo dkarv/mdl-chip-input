@@ -16,6 +16,7 @@
   .mdl-chipfield .mdl-textfield__label {
     top: 8px; }
   .mdl-chipfield:after {
+    /* TODO: without integration into MDL this has to be changed to your primary color */
     background-color: #009688;
     bottom: -1px;
     content: '';
