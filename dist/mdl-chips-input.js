@@ -17,17 +17,29 @@
     };
 
     MaterialChipInput.prototype.addChip_ = function(text) {
-        var currentChips = this.getChips();
+        var currentChips = this.getChipsText();
         if(currentChips.indexOf(text) > -1) {
             // ignore duplicates
             return;
         }
+        var chipTooltip = text.replace(/\W/g,"_"); // Strip any special characters
         var chip = document.createElement('span');
-        chip.classList = 'mdl-chip mdl-chip--deletable';
-        chip.innerHTML =
+        
+        chip.id = chipTooltip
+        chip.className = 'mdl-chip mdl-chip--deletable';
+        
+        if (this.options_.iconName !== ""){
+            chip.className += ' mdl-chip--contact';
+            chip.innerHTML =
+                '<span class="mdl-chip__contact mdl-color--blue mdl-color-text--white"><i class="material-icons">'+this.options_.iconName+'</i></span>'
+        }
+        
+        chip.innerHTML +=
             '<span class="mdl-chip__text">' + text + '</span>' +
             '<button type="button" class="mdl-chip__action">' +
-            '<i class="material-icons">close</i></button>';
+            '<i class="material-icons">cancel</i></button>' +
+            '<span class="mdl-tooltip mdl-tooltip--large" for="'+chipTooltip+'">' + text + '</span>';
+        
         var update = this.updateTarget_.bind(this);
         chip.getElementsByClassName('mdl-chip__action')[0].onclick = function() {
             console.log('removing', text);
@@ -37,15 +49,32 @@
         this.element_.insertBefore(chip, this.inputs_);
         this.updateTarget_();
     };
+    
+    MaterialChipInput.prototype.getChipsText = function() {
+        var currentChips = [];
+        var children = this.element_.children;
+        for(var i = 0; i < children.length; i++) {
+            if(children[i].classList.contains('mdl-chip')) {
+                var chipText = children[i].getElementsByClassName("mdl-chip__text")[0].textContent || children[i].getElementsByClassName("mdl-chip__text")[0].innerHTML;
+                currentChips.push(chipText);
+            }
+        }
+        return currentChips;
+    };
 
     MaterialChipInput.prototype.getChips = function() {
         var currentChips = [];
         var children = this.element_.children;
-        for(var i = children.length; i--;) {
+        for(var i = 0; i < children.length; i++) {
             if(children[i].classList.contains('mdl-chip')) {
-                currentChips.unshift(
-                    children[i].children[0].textContent ||
-                    children[i].children[0].innerText);
+                var chipText = children[i].getElementsByClassName("mdl-chip__text")[0].textContent || children[i].getElementsByClassName("mdl-chip__text")[0].innerHTML;
+                var chipIcon = children[i].getElementsByClassName("mdl-chip__contact");
+                if (chipIcon !== undefined && chipIcon.length > 0){
+                    chipIcon = chipIcon[0].innerText; // Get icon name
+                    currentChips.push({"chipIcon":chipIcon, "chipText":chipText});
+                } else {
+                    currentChips.push({"chipIcon":null, "chipText":chipText});
+                }
             }
         }
         return currentChips;
