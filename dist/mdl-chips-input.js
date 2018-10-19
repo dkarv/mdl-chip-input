@@ -153,7 +153,7 @@
     };
 
     MaterialChipInput.prototype.clickedResult_ = function(event) {
-        this.addChip_(event.target.getAttribute('data-value'));
+        this.addChip_(event.target.closest('li').getAttribute('data-value'));
         this.clearResults_();
         this.input_.value = '';
     };
