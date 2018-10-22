@@ -15,6 +15,14 @@
     MaterialChipInput.prototype.setProgress = function(p) {
 
     };
+    
+    MaterialChipInput.prototype.setIconName = function(iconName) {
+        if (typeof iconName === 'string' || iconName instanceof String){
+            this.options_.iconName = iconName;
+        } else {
+            this.options_.iconName = ""; // Icon not used if empty string 
+        }
+    };
 
     MaterialChipInput.prototype.addChip_ = function(text) {
         var currentChips = this.getChipsText();
