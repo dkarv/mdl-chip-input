@@ -221,7 +221,8 @@
             // set the default options
             this.options_ = {
                 maximum: Number.MAX_VALUE,
-                separator: ','
+                separator: ',',
+                iconName:''
             };
 
             // initialize the chips
