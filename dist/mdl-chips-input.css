@@ -10,6 +10,8 @@
   .mdl-chipfield .mdl-chip {
     float: left;
     margin-right: 5px; }
+    .mdl-chipfield .mdl-chip .mdl-chip__contact > .material-icons {
+      line-height: 32px; }
   .mdl-chipfield .mdl-textfield__input {
     height: 38px;
     border-bottom: none; }
@@ -17,7 +19,7 @@
     top: 8px; }
   .mdl-chipfield:after {
     /* TODO: without integration into MDL this has to be changed to your primary color */
-    background-color: #009688;
+    background-color: #0065bd;
     bottom: -1px;
     content: '';
     height: 2px;

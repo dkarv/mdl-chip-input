@@ -13,6 +13,10 @@
   .mdl-chip {
     float: left;
     margin-right: 5px;
+
+    .mdl-chip__contact > .material-icons{
+      line-height: 32px;
+    }
   }
 
   .mdl-textfield__input {
